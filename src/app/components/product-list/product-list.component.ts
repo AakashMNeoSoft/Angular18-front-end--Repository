@@ -21,12 +21,14 @@ import { Product } from '../../services/serv/product.service';
   imports: [CommonModule, RouterModule],
   template: `
     <h2>Product List</h2>
-    <a routerLink="/add-product">Add Product</a>
-    <ul>
-      <li *ngFor="let p of products">
-        {{ p.name }} - ₹{{ p.price }}
+    <ul *ngIf="products.length > 0; else noData">
+      <li *ngFor="let product of products">
+        {{ product.name }} - ₹{{ product.price }}
       </li>
     </ul>
+    <ng-template #noData>
+      <p>No products found.</p>
+    </ng-template>
   `
 })
 // export class ProductListComponent {
@@ -34,7 +36,7 @@ import { Product } from '../../services/serv/product.service';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private state: StateService, private service: ProductService) {}
+  constructor(private state: StateService, private service: ProductService) { }
 
   ngOnInit() {
     this.service.getAll().subscribe(data => this.state.update(data));

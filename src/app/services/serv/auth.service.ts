@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
- private apiUrl = 'https://your-api-url.com/api/auth'; // ✅ Replace with your backend API
+  //private apiUrl = 'https://your-api-url.com/api/auth'; // ✅ Replace with your backend API
 
-  constructor(private http: HttpClient, private router: Router) {}
+  private apiUrl = 'https://localhost:7020/api/Auth';
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(credentials: { username: string; password: string }) {
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials);

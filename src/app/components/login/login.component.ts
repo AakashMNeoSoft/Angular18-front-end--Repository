@@ -36,6 +36,7 @@ export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
   login() {
+    debugger;
     this.auth.login({ username: this.username, password: this.password }).subscribe({
       next: res => {
         this.auth.storeToken(res.token);
