@@ -27,7 +27,7 @@ import { StateService } from '../../services/serv/state.service';
       <button type="submit">Save</button>
     </form>
   `
-})
+})   
 export class ProductFormComponent {
     name = '';
     price = 0;
